@@ -101,6 +101,7 @@ public class HudRenderer implements DirectRenderingCallback {
         mRpm = rpm;
         mSpeed = speed;
         mGear = gear;
+
     }
 
     /**
@@ -154,6 +155,8 @@ public class HudRenderer implements DirectRenderingCallback {
 
         if (canvas != null) {
 
+            mHudView.setObdData(mTimestamp, mRpm, mSpeed, mGear);
+            
             doLayout();
             mLayout.draw(canvas);
 

@@ -23,8 +23,6 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.util.Date;
-
 /**
  * View used to draw HUD
  */
@@ -51,8 +49,8 @@ public class HudView extends View {
 
         mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         //mPaint.setTextSize(192);
-        mPaint.setTextSize(32);
-        mPaint.setColor(Color.GRAY);
+        mPaint.setTextSize(42);
+        mPaint.setColor(Color.WHITE);
         mPaint.setStrokeWidth(2);
     }
 
@@ -92,7 +90,7 @@ public class HudView extends View {
         int width = canvas.getWidth();
         int height = canvas.getHeight() / 2;
 
-        String timestamp = (mTimestamp != null) ? mTimestamp : new Date().toString();
+        String timestamp = (mTimestamp != null) ? mTimestamp : "Bluetooth connection?";
         //Log.v(TAG, "od [" + timestamp + "]");
         //canvas.drawText(t , 290, 160, mPaint);
         canvas.drawText(timestamp, 10, 160, mPaint);

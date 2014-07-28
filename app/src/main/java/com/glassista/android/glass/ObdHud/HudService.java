@@ -18,12 +18,16 @@ package com.glassista.android.glass.ObdHud;
 
 import android.app.PendingIntent;
 import android.app.Service;
-import android.bluetooth.*;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 
 import com.google.android.glass.timeline.LiveCard;
@@ -57,7 +61,14 @@ public class HudService extends Service {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
+
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
+        wakeLock.acquire(3600000);
+
+
     }
 
     @Override
