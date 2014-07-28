@@ -1,0 +1,43 @@
+<!-- Copyright (C) 2013 Google Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+--><!-- From: file:/Users/mpicco/Development/studio/obd-hud/app/src/main/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.glassista.android.glass.ObdHud">
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT"/>
+
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15"/>
+
+    <application android:allowBackup="true" android:label="@string/app_name">
+
+        <uses-library android:name="com.google.android.glass" android:required="true"/>
+
+        <activity android:name="com.glassista.android.glass.ObdHud.HudMenuActivity" android:theme="@style/MenuTheme"/>
+
+        <service android:enabled="true" android:label="@string/app_name" android:name="com.glassista.android.glass.ObdHud.HudService">
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER"/>
+            </intent-filter>
+            <meta-data android:name="com.google.android.glass.VoiceTrigger" android:resource="@xml/show_a_hud"/>
+        </service>
+
+        <activity android:label="@string/app_name" android:name="com.glassista.android.glass.ObdHud.StartHudActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

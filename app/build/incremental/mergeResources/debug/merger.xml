@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res" >
+            <file
+                name="ic_stop"
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/drawable-hdpi/ic_stop.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="hud_live_card"
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/layout/hud_live_card.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="hud_live_card"
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/menu/hud_live_card.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/values/colors.xml"
+                qualifiers="" >
+                <color name="black" >#ff000000
+                </color>
+            </file>
+            <file
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="card_margin" >40px
+                </dimen>
+            </file>
+            <file
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="stop" >Stop
+                </string>
+                <string name="app_name" >OBD HUD
+                </string>
+                <string name="show_a_hud" >show a hud
+                </string>
+            </file>
+            <file
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="MenuTheme"
+                    parent="@android:style/Theme.DeviceDefault" >
+                    <item name="android:windowBackground">
+@android:color/transparent
+                    </item>
+                    <item name="android:colorBackgroundCacheHint">
+@null
+                    </item>
+                    <item name="android:windowIsTranslucent">
+true
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@null
+                    </item>
+                </style>
+            </file>
+            <file
+                name="show_a_hud"
+                path="/Users/mpicco/Development/studio/obd-hud/app/src/main/res/xml/show_a_hud.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+        <source path="/Users/mpicco/Development/studio/obd-hud/app/build/res/rs/debug" />
+        <source path="/Users/mpicco/Development/studio/obd-hud/app/build/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/mpicco/Development/studio/obd-hud/app/src/debug/res" />
+    </dataSet>
+
+</merger>
