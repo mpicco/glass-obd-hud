@@ -31,10 +31,12 @@ public class HudView extends View {
     private static final String TAG = HudRenderer.class.getSimpleName();
 
     private Paint mPaint = new Paint();
-    private int mSpeed = 0;
-    private int mRpm = 0;
-    private int mGear = 0;
-    private String mTimestamp;
+    private Paint lPaint = new Paint();
+
+    private Integer mSpeed = 0;
+    private Integer mRpm = 0;
+    private Integer mGear = 0;
+    private Integer mThrottle;
 
     public HudView(Context context) {
         this(context, null, 0);
@@ -48,10 +50,15 @@ public class HudView extends View {
         super(context, attrs, style);
 
         mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
-        //mPaint.setTextSize(192);
-        mPaint.setTextSize(42);
+        mPaint.setTextSize(224);
         mPaint.setColor(Color.WHITE);
         mPaint.setStrokeWidth(2);
+
+        lPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+        lPaint.setTextSize(128);
+        lPaint.setColor(Color.WHITE);
+        lPaint.setStrokeWidth(1);
+
     }
 
     /**
@@ -62,10 +69,10 @@ public class HudView extends View {
      * @param speed Speed in MPH as measured by ECU
      * @param gear Valid only for F800ST: computed from speed/rpm using F800ST specs.
      */
-    public synchronized void setObdData(String timestamp, int rpm, int speed, int gear) {
-        mTimestamp = timestamp;
+    public synchronized void setObdData(int rpm, int speed, int throttle, int gear) {
         mRpm = rpm;
         mSpeed = speed;
+        mThrottle = throttle;
         mGear = gear;
 
         // Redraw the data.
@@ -90,10 +97,13 @@ public class HudView extends View {
         int width = canvas.getWidth();
         int height = canvas.getHeight() / 2;
 
-        String timestamp = (mTimestamp != null) ? mTimestamp : "Bluetooth connection?";
         //Log.v(TAG, "od [" + timestamp + "]");
         //canvas.drawText(t , 290, 160, mPaint);
-        canvas.drawText(timestamp, 10, 160, mPaint);
+        canvas.drawText(mRpm.toString(), 30, 120, lPaint);
+        canvas.drawText(mThrottle.toString(), 500, 120, lPaint);
+        canvas.drawText(mSpeed.toString(), 20, 340, mPaint);
+        canvas.drawText((mGear == 0) ? "-" : mGear.toString(), 490, 340, mPaint);
+
     }
 
 }

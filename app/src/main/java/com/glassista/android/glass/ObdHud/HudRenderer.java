@@ -54,9 +54,9 @@ public class HudRenderer implements DirectRenderingCallback {
     private final FrameLayout mLayout;
     private final HudView mHudView;
 
-    private String mTimestamp;
     private int mRpm;
     private int mSpeed;
+    private int mThrottle;
     private int mGear;
 
 
@@ -96,8 +96,8 @@ public class HudRenderer implements DirectRenderingCallback {
         updateRenderingState();
     }
 
-    public synchronized void setObdData(String timestamp, int rpm, int speed, int gear) {
-        mTimestamp = timestamp;
+    public synchronized void setObdData(int rpm, int speed, int throttle, int gear) {
+        mThrottle = throttle;
         mRpm = rpm;
         mSpeed = speed;
         mGear = gear;
@@ -155,7 +155,7 @@ public class HudRenderer implements DirectRenderingCallback {
 
         if (canvas != null) {
 
-            mHudView.setObdData(mTimestamp, mRpm, mSpeed, mGear);
+            mHudView.setObdData(mRpm, mSpeed, mThrottle, mGear);
             
             doLayout();
             mLayout.draw(canvas);

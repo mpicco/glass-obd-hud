@@ -236,15 +236,20 @@ public class HudService extends Service {
 
             try {
                 InputStream instream = socket.getInputStream();
+                final int msgSize = 11; // this must match message size from Torque plugin
+
                 bytesRead = -1;
                 total = 0;
-                while ((bytesRead = instream.read(buffer)) > 0) {
+                while ((bytesRead = instream.read(buffer, 0, msgSize)) > 0) {
                     total += bytesRead;
 
-                    String timestamp = new String(buffer, 0, bytesRead);
-                    Log.v(TAG, "bt [" + timestamp + "]");
+                    String obdstr = new String(buffer, 0, bytesRead);
+                    String[] vals = obdstr.split("\t");
 
-                    mRenderer.setObdData(timestamp, 4500, 80, 6);    // TODO: get real data here
+                    mRenderer.setObdData(Integer.parseInt(vals[0]),
+                            Integer.parseInt(vals[1]),
+                            Integer.parseInt(vals[2]),
+                            Integer.parseInt(vals[3]));
 
                 }
                 socket.close();
